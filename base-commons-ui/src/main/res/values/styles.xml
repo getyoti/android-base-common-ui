@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="Yoti.Widget.Button" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@drawable/yoti_button_bg</item>
+        <item name="android:textColor">@drawable/yoti_button_text_color</item>
+        <item name="android:textSize">@dimen/yoti_button_text_size</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:drawableLeft">@drawable/yoti_logo_small</item>
+        <item name="android:padding">@dimen/yoti_button_padding</item>
+        <item name="android:gravity">center</item>
+        <!-- Remove shadows (API 21+) -->
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+</resources>
