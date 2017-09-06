@@ -44,19 +44,13 @@ afterEvaluate { project ->
 
 
                 PublishArtifactSet set = configurations.archives.artifacts
-                set.each { ConfigurablePublishArtifact pa ->
+                set.each { org.gradle.api.internal.artifacts.publish.ArchivePublishArtifact pa ->
                     // check if the artefact generated contains SNAPSHOT => debug, add to the name
                     // for later exclusion filter
                     if(pa.getFile().getAbsolutePath().contains("-SNAPSHOT") &&
                             !pa.name.contains("-SNAPSHOT")){
 
                         pa.name = pa.name+"-SNAPSHOT"
-                    }
-                    // Remove the classifier for debug or release
-                    if(pa.classifier!=null && (pa.classifier.contains("debug") ||
-                            pa.classifier.contains("release"))){
-
-                        pa.setClassifier("") // not working ?? only working with non null and non empty value
                     }
                 }
 
