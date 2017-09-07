@@ -22,7 +22,7 @@ allprojects {
         maven { url "$androidHome/extras/google/m2repository/" }
         jcenter { url "http://jcenter.bintray.com/" }
         maven { url "http://repo1.maven.org/maven2" }
-        maven { url lkRepoRelease }
+        //maven { url lkRepoRelease }
     }
 
     ext {
