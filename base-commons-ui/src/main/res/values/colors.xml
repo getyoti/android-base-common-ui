@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <color name="white">@android:color/white</color>
-    <color name="grey">#4CFFFFFF</color>
-
-    <color name="yoti_primary_blue">#2D9FFF</color>
-
-</resources>

@@ -20,8 +20,7 @@ android {
 }
 
 dependencies {
-    debugCompile project(path: ':base-commons-ui', configuration: "debug")
-    releaseCompile project(path: ':base-commons-ui', configuration: "release")
+    implementation project(path: ':commons-ui')
 
-    compile parent.ext.libAndroidSupportv7
+    implementation parent.ext.libAndroidSupportv7
 }

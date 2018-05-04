@@ -1,0 +1,117 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply from: 'publication.gradle'
+
+group = "com.yoti.mobile.android"
+version = currentVersion
+
+
+android {
+    compileSdkVersion parent.ext.androidCompileSdkVersion
+    buildToolsVersion parent.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion parent.ext.androidMinSdkVersion
+        targetSdkVersion parent.ext.androidTargetSdkVersion
+
+        versionCode currentVersionCode.toInteger()
+        versionName currentVersion
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+        }
+        release {
+            storeFile file('debug.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            versionNameSuffix "-SNAPSHOT"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    libraryVariants.all { variant ->
+        String libRootName
+        variant.outputs.all { output ->
+            libRootName = "${archivesBaseName}-${variant.buildType.name}"
+
+            output.outputFileName = "${libRootName}.aar"
+        }
+
+        String taskPrefix = "generate" + variant.name.capitalize()
+        String javadocSuffix = "Javadoc"
+        String javadocJarSuffix = "JavadocJar"
+        String sourcesJarSuffix = "SourcesJar"
+
+
+        task(taskPrefix + javadocSuffix, type: Javadoc) {
+            failOnError false
+            source = variant.getJavaCompiler().source
+
+            title = "$pomName :${variant.name}"
+            description "Generates Javadoc for ${variant.name}."
+
+            destinationDir = new File(new File("${project.getBuildDir()}/docs/javadoc/", variant.baseName), "html")
+
+            options.links("http://docs.oracle.com/javase/7/docs/api/");
+            options.linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference");
+
+            ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+            classpath += files(ext.androidJar)
+            classpath += files(variant.javaCompile.classpath.files)
+            classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+            classpath += configurations.compile
+
+            exclude '**/BuildConfig.java'
+            exclude '**/R.java'
+        }
+
+        task(taskPrefix + javadocJarSuffix, type: Jar, dependsOn: taskPrefix + javadocSuffix) {
+            destinationDir = new File("${project.getBuildDir()}/outputs/jar")
+            archiveName = libRootName + "-javadoc.jar"
+            classifier = "javadoc"
+            extension = "jar"
+
+            from tasks[taskPrefix + javadocSuffix].destinationDir
+        }
+
+        task(taskPrefix + sourcesJarSuffix, type: Jar) {
+            destinationDir = new File("${project.getBuildDir()}/outputs/jar")
+            archiveName = libRootName + "-sources.jar"
+            classifier = "sources"
+            extension = "jar"
+
+            from android.sourceSets.main.java.sourceFiles
+        }
+
+        artifacts {
+            archives tasks[taskPrefix + javadocJarSuffix]
+            archives tasks[taskPrefix + sourcesJarSuffix]
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation parent.ext.libAndroidSupportv7
+}

@@ -1,0 +1,73 @@
+<resources>
+
+    <style name="YotiTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/BackgroundGray</item>
+
+        <item name="colorPrimary">@color/YotiBlue</item>
+        <item name="colorPrimaryDark">@color/BorderGrey</item>
+        <item name="colorAccent">@color/YotiBlue</item>
+    </style>
+
+    <style name="Yoti.HorizontalProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:minHeight">6dp</item>
+        <item name="android:maxHeight">6dp</item>
+        <item name="android:progressDrawable">@drawable/horizontal_progress_drawable</item>
+    </style>
+
+    <style name="Button" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textSize">@dimen/yoti_button_text_size</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">@dimen/yoti_button_padding</item>
+        <item name="android:gravity">center</item>
+        <!-- Remove shadows (API 21+) -->
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Button.Blue" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@drawable/yoti_blue_button_bg</item>
+        <item name="android:textColor">@drawable/yoti_blue_button_text_color</item>
+    </style>
+
+    <style name="Button.Green" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@drawable/yoti_green_button_bg</item>
+        <item name="android:textColor">@drawable/yoti_green_button_text_color</item>
+    </style>
+
+    <style name="Button.White" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@drawable/yoti_white_button_bg</item>
+        <item name="android:textColor">@drawable/yoti_white_button_text_color</item>
+    </style>
+
+    <style name="Yoti.Widget.Button" parent="Button.Blue">
+        <item name="android:drawableStart">@drawable/yoti_badge</item>
+        <item name="android:drawablePadding">3dp</item>
+    </style>
+
+    <!-- Divider line between sections -->
+    <style name="Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="Separator.Vertical">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1dp</item>
+    </style>
+
+    <style name="Separator.Toolbar">
+        <item name="android:background">@color/DividerGrey</item>
+    </style>
+
+    <style name="RegularLabel">
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textSize">@dimen/app_text_size_medium</item>
+    </style>
+
+    <style name="RegularLabelTitle">
+        <item name="android:textColor">@color/TextGrey</item>
+        <item name="android:textSize">@dimen/app_text_size_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

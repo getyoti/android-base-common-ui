@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="YotiBlue">#2D9FFF</color>
+    <color name="TextGrey">#333B40</color>
+    <color name="TextLightGrey">#67717E</color>
+    <color name="AccesoryGrey">#67717E</color>
+    <color name="DividerGrey">#B6BFCB</color>
+    <color name="BorderGrey">#DFDFDF</color>
+    <color name="BackgroundGray">#F5F5F5</color>
+    <color name="White">#FFFFFFFF</color>
+    <color name="YotiGreen">#39C48E</color>
+    <color name="YotiAmber">#FFB946</color>
+    <color name="YotiRed">#FE5F55</color>
+
+</resources>

@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.yoti.mobile.android.commons.ui.widget.YotiButton
-      android:id="@+id/yoti_button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:minWidth="175dp"
-      android:text="Login" />
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/yoti_toolbar_transparent_solid"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:layout_below="@+id/action_bar"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            style="@style/Yoti.HorizontalProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:indeterminate="true"/>
+
+        <com.yoti.mobile.android.commons.ui.widget.YotiButton
+            android:id="@+id/yoti_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:minWidth="175dp"
+            android:text="Login"/>
+
+        <Button
+            android:id="@+id/blue_button"
+            style="@style/Button.Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="175dp"
+            android:text="Blue button"/>
+
+        <Button
+            android:id="@+id/green_button"
+            style="@style/Button.Green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="175dp"
+            android:text="Green button"/>
+
+        <Button
+            android:id="@+id/white_button"
+            style="@style/Button.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="175dp"
+            android:text="White button"/>
+
+        <Button
+            android:id="@+id/progress_bar_button"
+            style="@style/Button.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="175dp"
+            android:text="Show progress bar"/>
+
+        <CheckBox
+            android:id="@+id/update_btn_states_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="175dp"
+            android:text="Disable buttons"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/yoti_progress_bar"/>
 
 </RelativeLayout>
